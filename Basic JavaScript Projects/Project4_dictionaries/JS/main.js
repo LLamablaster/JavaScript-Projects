@@ -19,7 +19,8 @@ function showColors2() {
 
 //delete the Two element from Colors dictionary
 function removeTwo() {
-    delete Colors.Two
+    delete Colors.Two;
+    console.log("colors Two: " + Colors.Two);
     var target = document.getElementById("Dictionary");
     target.textContent = Colors.Two;
 }
