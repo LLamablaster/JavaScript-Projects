@@ -43,8 +43,13 @@ function myFunction2() {
     + " manufactured in " + Emily.year + "."
 }
 
-//performs both myFunction and myFunction2 at once
-function both() {
-    myFunction();
-    myFunction2();
+//logs to the console using a nested function
+function appleStand() {
+    function buy() {
+        console.log("Here's an apple!");
+    }
+    buy();
+    buy();
+    buy();
 }
+appleStand();
