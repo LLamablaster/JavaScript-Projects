@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Title</title>
+    <meta charset="utf8" author="Sam Engen">
+    <script src="./JS/main.js"></script>
+</head>
+
+<body>
+    <div>
+        <p id="Time_of_day">time of day is...</p>
+        <button onclick="Time_function()">Click here to get the time.</button>
+    </div>
+    <div>
+        <p id="results">results</p>
+        <button onclick="dispHours()">show hours</button>
+    </div>
+    <div>
+        <p>decide if you would like to throw an error.</p>
+        <input type="radio" id="yesError" name="needError" value="true">
+        <label for="yesError">One error, please.</label><br>
+        <input type="radio" id="noError" name="needError" value="false">
+        <label for="noError">I'm good, thanks.</label><br>
+        <p id="results2">results</p>
+        <button onclick="throwFit()">execute</button>
+    </div>
+</body>
+
+</html>
