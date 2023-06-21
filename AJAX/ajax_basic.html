@@ -12,17 +12,17 @@
 				<input type="button" class="button" value="Get Content" id="btn_content" onclick="getContent();"/>
 			</div>
 		<script type="text/javascript">
-			
+			//create xhml request object
             var ajax = new XMLHttpRequest();
-
+            //prepare the request
             ajax.open("GET", "content.html");
-
+            //define callback method
             ajax.onreadystatechange = function() {
                 if (ajax.readyState == 4) {
                     document.getElementById("content").innerHTML = ajax.responseText;
                 }
             }
-
+            //send data request
             function getContent() {
                 ajax.send();
                 document.getElementById("btn_content").style.display = "none";
