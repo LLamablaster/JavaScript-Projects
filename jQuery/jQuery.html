@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+</head>
+<script>
+    
+    $(document).ready(function() {
+        //using jquery, we append our site code to the empty html page
+        $("html").append(
+            "<body>\
+                <div id='container'>\
+                    <div id='inner'>\
+                        <h1>BasicjQuery</h1>\
+                        <p id='1' style='display:none'>Paragraph 1</p>\
+                        <p id='2'>Paragraph 2</p>\
+                        <p id='3'>Paragraph 3</p>\
+                    </div>\
+                </div>\
+            </body>"
+        );
+        //we also use it to set the style of some of the content
+        $("#2").css({"color":"red"});
+        //add an on click function to paragraph 3 to hide all h1 elements
+        $("#3").click(function() {
+            $("h1").hide();
+        });
+        //when the mouse moves across the page, reveal paragraph 1
+        $(document).on("mousemove", function(event) {
+            $("#1").slideDown("slow",function(){});
+        });
+    });
+</script>
+
+</html>
