@@ -150,7 +150,7 @@ function drawWinLine(x1,y1,x2,y2) {
             //then if we haven't reached (x2,y2) increment (x,y) by 10 pixels
             if (x < x2) { x += 10 }
             if (y < y2) { y += 10 }
-            //extra cancellation check for 6-4-2 condition
+            //extra cancellation check for 0-4-8 condition
             if (x >= x2 && y >= y2) { cancelAnimationFrame(animationLoop) }
         }
         //end check for 6-4-2 win which has negative y travel
@@ -158,7 +158,7 @@ function drawWinLine(x1,y1,x2,y2) {
             //then if we haven't reached (x2,y2) increment (x,y) by 10 pixels
             if (x < x2) { x += 10 }
             if (y > y2) { y -= 10 }
-            //extra cancellation check for 0-4-8 condition
+            //extra cancellation check for 6-4-2 condition
             if (x >= x2 && y <= y2) { cancelAnimationFrame(animationLoop) }
         }
     }
