@@ -31,7 +31,7 @@ function placeXOrO(squareID) {
         //one second while the computer plays
         if (activePlayer === "o") {
             disableClick();
-            setTimeout(function () { computersTurn(); }, 1000);
+            setTimeout(function () { computersTurn(); }, 1500);
         }
         //return true only if the square has not been played
         return true;
@@ -85,7 +85,7 @@ function checkWinConditions() {
     //if the array is full of plays but there is no win, initiate a game reset 
     else if (selectedSquares.length>= 9) {
         audio("./media/Weak_02.ogg");
-        setTimeout(function () { resetGame(); }, 1000)
+        setTimeout(function () { resetGame(); }, 1500)
     }
 
     //this function checks if each of three arguments are included
@@ -102,7 +102,7 @@ function checkWinConditions() {
 //this function locks out the user from interacting with the page for 1 second
 function disableClick() {
     document.body.style.pointerEvents = "none";
-    setTimeout(function () { document.body.style.pointerEvents = "auto"; }, 1000);
+    setTimeout(function () { document.body.style.pointerEvents = "auto"; }, 1500);
 }
 
 //this function is a sortcut to play an audio clip
@@ -130,8 +130,8 @@ function drawWinLine(x1,y1,x2,y2) {
     //disable user input, animate the line, clear the line, then reset the game
     disableClick();
     animateLineDrawing();
-    setTimeout(function () { clear(); }, 1000);
-    setTimeout(function () { resetGame(); }, 1000);
+    setTimeout(function () { clear(); }, 1500);
+    setTimeout(function () { resetGame(); }, 1500);
 
     //this function animates the line being drawn
     function animateLineDrawing() {
@@ -145,11 +145,22 @@ function drawWinLine(x1,y1,x2,y2) {
         c.lineWidth = 10
         c.strokeStyle = "rgba(70,255,33,.8)";
         c.stroke();
-        //then if we haven't reached (x2,y2) increment (x,y) by 10 pixels
-        if (x < x2) { x += 10 }
-        if (y < y2) { y += 10 }
-        //extra cancellation check for diagonal wins
-        if (x >= x2 && y >= y2) { cancelAnimationFrame(animationLoop) }
+        //end check for all cases except 6-4-2 win
+        if (x1 <= x2 && y1 <= y2) {
+            //then if we haven't reached (x2,y2) increment (x,y) by 10 pixels
+            if (x < x2) { x += 10 }
+            if (y < y2) { y += 10 }
+            //extra cancellation check for 6-4-2 condition
+            if (x >= x2 && y >= y2) { cancelAnimationFrame(animationLoop) }
+        }
+        //end check for 6-4-2 win which has negative y travel
+        if (x1 <= x2 && y1 >= y2) {
+            //then if we haven't reached (x2,y2) increment (x,y) by 10 pixels
+            if (x < x2) { x += 10 }
+            if (y > y2) { y -= 10 }
+            //extra cancellation check for 6-4-2 condition
+            if (x >= x2 && y <= y2) { cancelAnimationFrame(animationLoop) }
+        }
     }
 
     //this function clears the line off the canvas
